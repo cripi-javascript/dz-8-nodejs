@@ -7,13 +7,14 @@
         filterOption = "all",
         sortOption = "without";
 
-    var template = "<div>Название: <%= name %></div>" +
+    var template = '<li class="event_item" >' +
+                        "<div>Название: <%= name %></div>" +
                         "<div>Начало: <%= start %></div>" +
                         "<div>Окончание: <%= end %></div>" +
                         "<div>Местоположение: <%= location %></div>" +
                         "<div>Напомнить за: <%= remindTime %></div>" +
                         "<div>Описание: <%= description %></div>" +
-                        "<div>Рейтинг: <%= raiting %></div>";
+                        "<div>Рейтинг: <%= raiting %></div></li>";
     $(document).ready(initialise);
 
 /**
@@ -126,16 +127,16 @@
             length = filterList.length(),
             i;
 
-        var html = "<ul class='events'>";
+        var $box = $("<ul class='events'/>");
+        var $temp = $();
+
         for (i = 0; i < length; i++)
             {
-                html += "<li class='event_item'>" +
-                         tmpl(template, filterList.items[i]) +
-                         "</li>";
+               $temp = $temp.add($(tmpl(template, filterList.items[i])));
             }
 
-        html += "</ul>";
-        document.getElementById("collection").innerHTML = html;
+        $temp.appendTo($box);
+        $box.appendTo($("#collection"));
 }
 
 /**

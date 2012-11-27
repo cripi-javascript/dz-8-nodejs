@@ -13,6 +13,7 @@ app.post('/current-event.json', function (request, response) {
                 writeStream.write(textData);
             });
             response.send("hello");
+            response.end();
         });
 
 app.get('/current-event.json', function (request, response) {
@@ -20,6 +21,7 @@ app.get('/current-event.json', function (request, response) {
     readStream.on('data', function(textData) {
         response.send('[' + textData + ']');
     });
+    response.end();
 });
 
 app.use(express.static(staticDir));
