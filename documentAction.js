@@ -7,6 +7,13 @@
         filterOption = "all",
         sortOption = "without";
 
+    var template = "<div>Название: <%= name %></div>" +
+                        "<div>Начало: <%= start %></div>" +
+                        "<div>Окончание: <%= end %></div>" +
+                        "<div>Местоположение: <%= location %></div>" +
+                        "<div>Напомнить за: <%= remindTime %></div>" +
+                        "<div>Описание: <%= description %></div>" +
+                        "<div>Рейтинг: <%= raiting %></div>";
     $(document).ready(initialise);
 
 /**
@@ -113,11 +120,6 @@
         var $removeList = $(".events");
         $removeList.remove();
 
-        var $addList = $('<ul />')
-            .addClass("events");
-
-        var fragment = document.createDocumentFragment();
-
         if (changeType === "sort") {
             sortedList = sortEvents();
         }
@@ -125,60 +127,17 @@
             length = filterList.length(),
             i;
 
+        var html = "<ul class='events'>";
         for (i = 0; i < length; i++)
         {
-            var element = filterList.items[i];
-            var $el = addLiElement(element);
-            $el.appendTo($addList);
+            html += "<li class='event_item'>" +
+                        tmpl(template, filterList.items[i]) +
+                    "</li>";
         }
 
-         var $parent = $(".collection");
-        $addList.appendTo(fragment);
-        $parent.append(fragment);
+        html += "</ul>";
+        document.getElementById("collection").innerHTML = html;
 }
-
-/**
- * Создает DOM-элемент типа li, заполняется полями из объекта
- *
- * @param {Event} element - объект типа Element
- *
- * @return Возвращает созданный дом-элемент типа li
-*/
-
-    function addLiElement (element) {
-        var $el = $('<li />')
-            .addClass("event_item"),
-
-            $name = $('<div />', {
-            text: "Название: " + element.name
-        }).appendTo($el),
-
-            $start = $('<div />', {
-            text: "Начало: " + element.start
-        }).appendTo($el),
-
-            $end = $('<div />', {
-            text: "Окончание: " + element.end
-        }).appendTo($el),
-
-            $location = $('<div />', {
-            text: "Местоположение: " + element.location
-        }).appendTo($el),
-
-            $remindTime = $('<div />', {
-            text: "Напомнить за: " + element.remindTime + "минут"
-        }).appendTo($el),
-
-            $description = $('<div />', {
-            text: "Описание: " + element.description
-        }).appendTo($el),
-
-            $raiting = $('<div />', {
-            text: "Рейтинг: " + element.raiting
-        }).appendTo($el);
-
-        return $el;
-    };
 
 /**
  * Навешивает обработчики событий на страницу

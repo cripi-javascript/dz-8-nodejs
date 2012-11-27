@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 </head>
 <body>
-    <div class="frame">
+    <div id="frame">
         <form id="form" >
             <div class="field">Название:  <input type="text" id="title" name="title" />
             </div>
@@ -44,7 +44,7 @@
                 <label><input type="radio" class="sort" name="sort" value="without" checked />Без сортировки</label>
         </div>
     </div>
-    <div class="frame">
+    <div id="frame">
          <div id="title_help" class="help">Введите название события</div>
          <div id="from_help" class="help">Введите корректную дату</div>
          <div id="to_help" class="help">Введите корректную дату</div>
@@ -55,7 +55,7 @@
          <div id="remindTime_help" class="help">Введите корректное число</div>
     </div>
     
-    <div class="collection">
+    <div id="collection">
         <ul class="events"></ul>
     </div>
     <div id="notify">
@@ -72,6 +72,7 @@
     <script type="text/javascript" src="event.js"></script>
     <script type="text/javascript" src="events.js"></script>
     <script type="text/javascript" src="validation.js"></script>
+    <script type="text/javascript" src="templating.js"></script>
     <script type="text/javascript" src="documentAction.js"></script>
 </body>
 </html>
