@@ -3,6 +3,7 @@
 
     var ListOfEvents = new Events(),
         sortedList = new Events(),
+        queue = new Events,
         filterOption = "all",
         sortOption = "without";
 
@@ -60,17 +61,19 @@
                 remindTime: remindTime
             }).validate();
 
-        var result = ListOfEvents.add(element);
+        ListOfEvents = ListOfEvents.add(element);
+        queue = queue.add(element);
 
-        $.post('current-event.json', result.serialise())
-            .error( function () {
-                    alert("Не могу подключиться к северу. Попробуйте позже");
-                    return;
-            })
-            .complete(function () {
-                ListOfEvents = result;
+        $.post('current-event.json', queue.serialise())
+            .success(function (result) {
+                queue = new Events();
                 changeDocument("sort");
                 document.forms["form"].reset();
+                //alert("Все события были успешно отправлены.");
+            })
+            .error( function () {
+                alert("Отсутсвует подключение к серверу.");
+                return;
             });
     }
 

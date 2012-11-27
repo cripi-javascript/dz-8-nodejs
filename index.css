@@ -1,5 +1,5 @@
 body{ text-align: left;}
-#frame {
+.frame {
     display: inline-block;
     float: left;
     text-align: right;

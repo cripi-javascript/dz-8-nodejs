@@ -1,17 +1,26 @@
-﻿var path = require('path'),
-    connect = require(__dirname + '\\node_modules\\connect'),
-    fs = require('fs'),
-    express = require(__dirname + '\\node_modules\\express');
+﻿var fs = require('fs'),
+    express = require('express');
 
 var app = express();
 var staticDir = __dirname;
 
-app.use(express.bodyParser());
-
 app.post('/current-event.json', function (request, response) {
-            //fs.writeFile('./current-event.json', request.body);
-            response.send(JSON.stringify(request.body.data) + "ehelloo");
+            var writeStream = fs.createWriteStream('./current-event.json', {'flags': 'a'});
+            request.on('data', function (textData) {
+                textData = textData.toString()
+                                    .replace('[', ",")
+                                    .replace(']', "");
+                writeStream.write(textData);
+            });
+            response.send("hello");
         });
+
+app.get('/current-event.json', function (request, response) {
+            var readStream = fs.createReadStream('./current-event.json', {'flags': 'r'});
+            readStream.on('data', function(textData) {
+                response.send("[" + textData + "]");
+            });
+})
 
 app.use(express.static(staticDir));
 
