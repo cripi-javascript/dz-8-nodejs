@@ -64,10 +64,8 @@
 
         $.post('current-event.json', result.serialise())
             .error( function () {
-              /*if (error === "error") {
                     alert("Не могу подключиться к северу. Попробуйте позже");
                     return;
-                }*/
             })
             .complete(function () {
                 ListOfEvents = result;
