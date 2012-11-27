@@ -16,11 +16,11 @@ app.post('/current-event.json', function (request, response) {
         });
 
 app.get('/current-event.json', function (request, response) {
-            var readStream = fs.createReadStream('./current-event.json', {'flags': 'r'});
-            readStream.on('data', function(textData) {
-                response.send("[" + textData + "]");
-            });
-})
+    var readStream = fs.createReadStream('./current-event.json', {'flags': 'r'});
+    readStream.on('data', function(textData) {
+        response.send('[' + textData + ']');
+    });
+});
 
 app.use(express.static(staticDir));
 

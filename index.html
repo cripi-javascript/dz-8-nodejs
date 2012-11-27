@@ -9,12 +9,11 @@
 <body>
     <div id="frame">
         <form id="form" >
-            <div class="field">Название:  <input type="text" id="title" name="title" />
-            </div>
-            <div class="field">С:  <input type="text" id="from" class="date" name="from"/></div>
-            <div class="field">По:  <input type="text" id="to" class="date" name="to"/></div>
-            <div class="field">Место:  <input type="text" id="location" name="location" /></div>
-            <div class="field">Важность события: 
+            <div>Название:  <input type="text" id="title" name="title" /></div>
+            <div>С:  <input type="text" id="from" class="date" name="from"/></div>
+            <div>По:  <input type="text" id="to" class="date" name="to"/></div>
+            <div>Место:  <input type="text" id="location" name="location" /></div>
+            <div>Важность события:
                     <select id="raiting" name="raiting" >
                         <option value="5">*****</option>
                         <option value="4">****</option>
@@ -24,13 +23,9 @@
                         <option selected value="0"></option>
                     </select>
             </div>
-            <div class="field">Описание:
-                    <textarea id="description" name="description" rows=3 ></textarea>
-            </div>
-            <div class="field">Напомнить за: <input type="number" id="remindTime" name="remindTime">минут
-            </div>
+            <div>Описание:<textarea id="description" name="description" rows=3 ></textarea></div>
+            <div>Напомнить за: <input type="number" id="remindTime" name="remindTime">минут</div>
             <input id="addButton" type="button" value="Добавить событие"/>
-
         </form>
         <div class="select">
             <div class="selecter">Выбрать</div>
@@ -44,7 +39,7 @@
                 <label><input type="radio" class="sort" name="sort" value="without" checked />Без сортировки</label>
         </div>
     </div>
-    <div id="frame">
+    <div id="error">
          <div id="title_help" class="help">Введите название события</div>
          <div id="from_help" class="help">Введите корректную дату</div>
          <div id="to_help" class="help">Введите корректную дату</div>

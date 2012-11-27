@@ -23,7 +23,7 @@
 */
     function initialise() {
 
-        $( '.date' ).datepicker();
+        $('.date').datepicker();
 
         $.getJSON('current-event.json')
             .complete(function () { $("#notify").hide(); })
@@ -46,12 +46,12 @@
 */
     function preventDefault() {
 
-        var name = $("#title").val(),
+        var name = $("#title").val().trim(),
             start = $("#from").val(),
             end = $("#to").val(),
-            location = $("#location").val(),
+            location = $("#location").val().trim(),
             raiting = $("#raiting").val(),
-            description = $("#description").val(),
+            description = $("#description").val().trim(),
             remindTime = $("#remindTime").val();
 
         if (!validateTitle(name, $('#title_help'))) { alert("Событие не было добавлено. Ошибка"); return; }
@@ -72,7 +72,7 @@
         queue = queue.add(element);
 
         $.post('current-event.json', queue.serialise())
-            .success(function (result) {
+            .success(function () {
                 queue = new Events();
                 changeDocument("sort");
                 document.forms["form"].reset();
@@ -80,7 +80,6 @@
             })
             .error( function () {
                 alert("Отсутсвует подключение к серверу.");
-                return;
             });
     }
 
@@ -129,11 +128,11 @@
 
         var html = "<ul class='events'>";
         for (i = 0; i < length; i++)
-        {
-            html += "<li class='event_item'>" +
-                        tmpl(template, filterList.items[i]) +
-                    "</li>";
-        }
+            {
+                html += "<li class='event_item'>" +
+                         tmpl(template, filterList.items[i]) +
+                         "</li>";
+            }
 
         html += "</ul>";
         document.getElementById("collection").innerHTML = html;
@@ -159,14 +158,14 @@
             validateNumber(cur.value, $('#remindTime_help'));
         });
 
-        $('.filter').each(function(index) {
-            $(this).on('change', function ($event) {
+        $('.filter').each(function() {
+            $(this).on('change', function () {
             filterOption = $('input[name="filter"]:checked').val(); 
             changeDocument("filter");
         })});
 
-        $('.sort').each(function(index) {
-            $(this).on('change', function ($event) {
+        $('.sort').each(function() {
+            $(this).on('change', function () {
             sortOption = $('input[name="sort"]:checked').val(); 
             changeDocument("sort");
         })});
