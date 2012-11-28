@@ -69,12 +69,11 @@
                 remindTime: remindTime
             }).validate();
 
-        ListOfEvents = ListOfEvents.add(element);
-        queue = queue.add(element);
+        var result = ListOfEvents.add(element);
 
-        $.post('current-event.json', queue.serialise())
+        $.post('current-event.json', result.serialise())
             .success(function () {
-                queue = new Events();
+                ListOfEvents = result;
                 changeDocument("sort");
                 document.forms["form"].reset();
                 //alert("Все события были успешно отправлены.");

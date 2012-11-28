@@ -5,23 +5,23 @@ var app = express();
 var staticDir = __dirname;
 
 app.post('/current-event.json', function (request, response) {
-            var writeStream = fs.createWriteStream('./current-event.json', {'flags': 'a'});
-            request.on('data', function (textData) {
-                textData = textData.toString()
-                                    .replace('[', ",")
-                                    .replace(']', "");
-                writeStream.write(textData);
+            var writeStream = fs.createWriteStream('./current-event.json');
+            request.pipe(writeStream);
+    
+            request.on('end', function () {
+                writeStream.end();
+                response.send("ok");
+                response.end();
             });
-            response.send("hello");
-            response.end();
         });
 
 app.get('/current-event.json', function (request, response) {
-    var readStream = fs.createReadStream('./current-event.json', {'flags': 'r'});
-    readStream.on('data', function(textData) {
-        response.send('[' + textData + ']');
-    });
-    response.end();
+            var readStream = fs.createReadStream('./current-event.json');
+            readStream.pipe(response);
+
+            readStream.on('close', function () {
+                response.end();
+            });
 });
 
 app.use(express.static(staticDir));
