@@ -1,0 +1,56 @@
+[
+    {
+        "name": "pewpew",
+        "start": "2012-11-07T04:18:00.000Z",
+        "end": "2012-11-07T04:18:00.000Z",
+        "location": "",
+        "remindTime": 0,
+        "description": "(отсутствует)",
+        "raiting": 0
+    },
+    {
+        "name": "Пара по веб-технологиям",
+        "start": "2012-11-20T06:50:00.000Z",
+        "end": "2012-11-20T06:50:00.000Z",
+        "location": "5 этаж",
+        "remindTime": 10,
+        "description": "Взять бумагу и ручку, не брать бук!",
+        "raiting": 0
+    },
+    {
+        "name": "Событие",
+        "start": "2012-11-28T18:00:00.000Z",
+        "end": "2012-11-28T18:00:00.000Z",
+        "location": "",
+        "remindTime": 0,
+        "description": "(отсутствует)",
+        "raiting": "0"
+    },
+    {
+        "name": "Событие5",
+        "start": "2012-11-29T18:00:00.000Z",
+        "end": "2012-11-29T18:00:00.000Z",
+        "location": "",
+        "remindTime": 0,
+        "description": "(отсутствует)",
+        "raiting": "0"
+    },
+    {
+        "name": "tretr",
+        "start": "2012-11-28T18:00:00.000Z",
+        "end": "2012-11-28T18:00:00.000Z",
+        "location": "",
+        "remindTime": 0,
+        "description": "(отсутствует)",
+        "raiting": "0"
+    },
+    {
+        "name": "Событиеjnklk",
+        "start": "2012-11-29T18:00:00.000Z",
+        "end": "2012-11-29T18:00:00.000Z",
+        "location": "",
+        "remindTime": 0,
+        "description": "(отсутствует)",
+        "raiting": "0"
+    }
+]
