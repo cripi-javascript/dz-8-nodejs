@@ -1,0 +1,164 @@
+﻿<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<div id ="Calendar">
+    <div id = "ActionWithEventList">
+        <div id = "EventFactory">
+            <div>
+                <span> Когда: </span>
+                <input type="date" class = "EventsStartDate"/>
+                <span> - </span>
+                <input type="date" class = "EventsEndDate"/>
+            </div>
+            <div></div>
+            <div>
+                <span> Что </span>
+                <input type="text" class = "EventsName"/>
+            </div>
+            <div></div>
+            <div>
+                <span>Где? (</span>
+                <input type="text" class = "EventsX"/>
+                <span>;</span>
+                <input type="text" class = "EventsY"/>
+                <span>)</span>
+            </div>
+            <div></div>
+            <div>
+                <span>Важность </span>
+                <input type="text" class ="EventsStars"/>
+            </div>
+            <div></div>
+            <div>
+                <span>Цена посещения </span>
+                <input type="text" class ="EventsCost"/>
+            </div>
+            <div></div>
+            <div>
+                <div>Список участников:</div>
+                <ol>
+                    <li><input type="text" class ="EventsParty"/></li>
+                    <li><input type="text" class ="EventsParty"/></li>
+                    <li><input type="text" class ="EventsParty"/></li>
+                </ol>
+            </div>
+            <div>
+                <input type="button" value="Добавить событие" id = "SubmitNewEventButton"/>
+            </div>
+        </div>
+        <div id = "EventFilter">
+            <div>
+                <div>
+                    <span>Показать события, которые</span>
+                </div>
+                <div>
+                    <span>Вообще есть</span>
+                    <input type="radio" name="TimeStatusFilter" value="none" checked>
+                </div>
+                <div>
+                    <span>Прошли</span>
+                    <input type="radio" name="TimeStatusFilter" value="past">
+                </div>
+                <div>
+                    <span>Идут</span>
+                    <input type="radio" name="TimeStatusFilter" value="now">
+                </div>
+                <div>
+                    <span>Будут идти</span>
+                    <input type="radio" name="TimeStatusFilter" value="next" >
+                </div>
+                <div>
+                    <span>В период</span>
+                    <input type="radio" name="TimeStatusFilter" value="period" >
+
+                    <input type="date" class = "StartDate">
+                    <span>-</span>
+                    <input type="date" class = "EndDate">
+                </div>
+                <div>
+                    <span>Показать события, которые стоят</span>
+                </div>
+                <div>
+                    <span>Без разницы сколько</span>
+                    <input type="radio" name="CostFilter" value="none" checked>
+                </div>
+                <div>
+                    <span>Стоят не меньше X и не больше Y</span>
+                    <input type="radio" name="CostFilter" value="minMaxCost">
+                    <input type="text" class ="MinCost">
+                    <span>-</span>
+                    <input type="text" class="MaxCost">
+                </div>
+                <div>
+                    <span>Отсортировать события..</span>
+                </div>
+                <div>
+                    <span>Никак</span>
+                    <input type="radio" name="Sort" value="none" checked>
+                </div>
+                <div>
+                    <span>По звездам</span>
+                    <input type="radio" name="Sort" value="stars">
+                </div>
+                <div>
+                    <span>По дате</span>
+                    <input type="radio" name="Sort" value="date">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>№</td>
+                <td>Начало</td>
+                <td>Конец</td>
+                <td>Что</td>
+                <td>X</td>
+                <td>Y</td>
+                <td>Звездочки</td>
+                <td>Цена</td>
+                <td>Участники</td>
+            </tr>
+            </thead>
+            <tbody id = "eventList">
+            <tr>
+                <td>№</td>
+                <td>Начало</td>
+                <td>Конец</td>
+                <td>Что</td>
+                <td>X</td>
+                <td>Y</td>
+                <td>Звездочки</td>
+                <td>Цена</td>
+                <td>Участники</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src = "http://yandex.st/jquery/1.8.3/jquery.js"></script>
+<script src = "Scripts/Polyfill.js"></script>
+<script src="./Scripts/Model.js"></script>
+<script src="./Scripts/Templating.js"></script>
+<script src="./Scripts/FieldError.js"></script>
+<script src="./Scripts/Event.js"></script>
+<script src="./Scripts/Collection.js"></script>
+<script src="./Scripts/BaseEvent.js"></script>
+<script src="./Scripts/FactoryEvent.js"></script>
+<script src="./Scripts/FilterEvent.js"></script>
+<script src="./Scripts/TableEventBase.js"></script>
+<script src="./Scripts/Calendar.js"></script>
+<script type="text/javascript">
+    $(function (){
+        var $eventFactory = $("#EventFactory");
+        var $eventFilter = $("#EventFilter");
+        var $eventTable = $("#eventList");
+        var calendar = new Calendar($eventFactory, $eventFilter, $eventTable, "./base.json");
+    });
+</script>
+</body>
+</html>
