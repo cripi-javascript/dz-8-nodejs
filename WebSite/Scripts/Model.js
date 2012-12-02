@@ -1,10 +1,7 @@
 ﻿/*global
-$: false
+$: false,
+ window: false
  */
-if (typeof window === "undefined") {
-    window = exports;
-    window.$ = require("jquery");
-}
 (function (toExport) {
     "use strict";
 /**
@@ -63,10 +60,10 @@ if (typeof window === "undefined") {
         };
     } else {
         printDate = function (date) {
-            var month = date.getMonth();
-            var day = date.getDate();
-            month = (month < 10) ? "0" + month.toString(): month.toString();
-            day = (day < 10) ? "0" + day.toString(): day.toString();
+            var month = date.getMonth(),
+                day = date.getDate();
+            month = (month < 10) ? "0" + month.toString() : month.toString();
+            day = (day < 10) ? "0" + day.toString() : day.toString();
             return date.getFullYear() + "-" + month + "-" + day;
         };
     }

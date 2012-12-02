@@ -1,14 +1,10 @@
 ﻿/*global Model: false,
 GUID:false,
  FieldsError:false,
- $:false
+ $:false,
+ window:false
 */
-if (typeof window === "undefined") {
-    var modelModule = require('./Model.js');
-    var $ = require("jquery");
-    window = exports;
 
-}
 (function (toExport) {
     "use strict";
 
