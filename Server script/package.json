@@ -1,0 +1,14 @@
+{
+    "dependencies": {
+        "optimist": "*",
+        "express": "*",
+        "colors": "*"
+    },
+    "name": "CalendarServer",
+    "version": "1.0.0",
+    "description": "Задание на dz8-nodejs",
+    "author": {
+        "name": "Mangin.Alex",
+        "email": "mywork.koder@gmail.com"
+    }
+}

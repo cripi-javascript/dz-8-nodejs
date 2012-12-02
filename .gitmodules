@@ -1,0 +1,9 @@
+[submodule "qunit"]
+	path = qunit
+	url = git://github.com/jquery/qunit.git
+[submodule "jquery"]
+	path = jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "es5-shim"]
+	path = es5-shim
+	url = git://github.com/kriskowal/es5-shim.git
